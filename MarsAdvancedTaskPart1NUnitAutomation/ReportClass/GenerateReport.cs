@@ -15,13 +15,13 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.ReportClass
     public class GenerateReport : CommonDriver
     {
 
-        public ExtentReports extent;
-        public ExtentTest test;
-        public ScreenShotCapture screenShotCapture;
+        public ExtentReports? extent;
+        public ExtentTest? test;
+        public ScreenShotCapture? screenShotCapture;
 
         public void CreateTest()
         {
-            test = extent.CreateTest(TestContext.CurrentContext.Test.Name);
+            test = extent?.CreateTest(TestContext.CurrentContext.Test.Name);
         }
         public void GenerateExtentReport(string localPath)
         {
@@ -43,7 +43,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.ReportClass
         {
             var status = TestContext.CurrentContext.Result.Outcome.Status;
             screenShotCapture = new ScreenShotCapture();
-            string stacktrace;
+            string stacktrace = string.Empty;
 
             if (string.IsNullOrEmpty(TestContext.CurrentContext.Result.StackTrace))
             {
@@ -62,8 +62,8 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.ReportClass
                     DateTime time = DateTime.Now;
                     String fileName = "Screenshot_" + time.ToString("h_mm_ss") + ".png";
                     String screenShotPath = screenShotCapture.Capture(driver, fileName);
-                    test.Log(Status.Fail, "Fail");
-                    test.Log(Status.Fail, "Snapshot below: " + test.AddScreenCaptureFromPath(@"Screenshots\\" + fileName));
+                    test?.Log(Status.Fail, "Fail");
+                    test?.Log(Status.Fail, "Snapshot below: " + test.AddScreenCaptureFromPath(@"Screenshots\\" + fileName));
                     break;
                 case TestStatus.Inconclusive:
                     logstatus = Status.Warning;
@@ -76,13 +76,13 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.ReportClass
                     time = DateTime.Now;
                     fileName = "Screenshot_" + time.ToString("h_mm_ss") + ".png";
                     screenShotPath = screenShotCapture.Capture(driver, fileName);
-                    test.Log(Status.Pass, "Pass");
-                    test.Log(Status.Pass, "Snapshot below: " + test.AddScreenCaptureFromPath(@"Screenshots\\" + fileName));
+                    test?.Log(Status.Pass, "Pass");
+                    test?.Log(Status.Pass, "Snapshot below: " + test.AddScreenCaptureFromPath(@"Screenshots\\" + fileName));
 
                     break;
             }
-            test.Log(logstatus, "Test ended with " + logstatus + stacktrace);
-            extent.Flush();
+            test?.Log(logstatus, "Test ended with " + logstatus + stacktrace);
+            extent?.Flush();
         }
 
 

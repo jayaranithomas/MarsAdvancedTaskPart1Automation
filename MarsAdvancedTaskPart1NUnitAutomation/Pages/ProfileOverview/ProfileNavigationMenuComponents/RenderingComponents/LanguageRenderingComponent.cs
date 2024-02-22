@@ -12,12 +12,12 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.ProfileOverview.ProfileNavi
 
     public class LanguageRenderingComponent : CommonDriver
     {
-        IWebElement languageTextBox;
-        IWebElement chooseLevelDD;
+        IWebElement? languageTextBox;
+        IWebElement? chooseLevelDD;
 
-        IWebElement addButton;
-        IWebElement updateButton;
-        IWebElement cancelButton;
+        IWebElement? addButton;
+        IWebElement? updateButton;
+        IWebElement? cancelButton;
         int cancelFlag = 0;
         public void RenderAddComponents()
         {
@@ -68,23 +68,23 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.ProfileOverview.ProfileNavi
 
             if (!string.IsNullOrEmpty(languageDM.language))
             {
-                languageTextBox.Click();
-                languageTextBox.SendKeys(languageDM.language);
+                languageTextBox?.Click();
+                languageTextBox?.SendKeys(languageDM.language);
             }
             if (!string.IsNullOrEmpty(languageDM.level))
             {
-                chooseLevelDD.Click();
-                chooseLevelDD.SendKeys(languageDM.level);
+                chooseLevelDD?.Click();
+                chooseLevelDD?.SendKeys(languageDM.level);
             }
 
             Thread.Sleep(2000);
 
             if (cancelFlag != 1)
             {
-                addButton.Click();
+                addButton?.Click();
             }
             else
-            { cancelFlag = 0; cancelButton.Click(); }
+            { cancelFlag = 0; cancelButton?.Click(); }
         }
 
         public void EditLanguageRecord(LanguageDM languageDM)
@@ -105,18 +105,18 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.ProfileOverview.ProfileNavi
             }
             else
             {
-                languageTextBox.Clear();
-                languageTextBox.SendKeys(languageDM.language);
+                languageTextBox?.Clear();
+                languageTextBox?.SendKeys(languageDM.language);
             }
 
 
-            chooseLevelDD.Click();
+            chooseLevelDD?.Click();
             if (!string.IsNullOrEmpty(languageDM.level))
-                chooseLevelDD.SendKeys(languageDM.level);
+                chooseLevelDD?.SendKeys(languageDM.level);
 
             else
-                chooseLevelDD.SendKeys("Country of College / University");
-            chooseLevelDD.Click();
+                chooseLevelDD?.SendKeys("Language Level");
+            chooseLevelDD?.Click();
 
 
 
@@ -125,10 +125,10 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.ProfileOverview.ProfileNavi
             if (cancelFlag != 1)
             {
 
-                updateButton.Click();
+                updateButton?.Click();
             }
             else
-            { cancelFlag = 0; cancelButton.Click(); }
+            { cancelFlag = 0; cancelButton?.Click(); }
 
         }
     }

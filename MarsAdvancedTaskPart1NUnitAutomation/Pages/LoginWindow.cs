@@ -13,9 +13,9 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages
     {
         LoginDM loginData;
         JSONReader jsonObj;
-        IWebElement emailIdTextBox;
-        IWebElement passWordTextBox;
-        IWebElement loginButton;
+        IWebElement? emailIdTextBox;
+        IWebElement? passWordTextBox;
+        IWebElement? loginButton;
         public LoginWindow()
         {
             loginData = new LoginDM();
@@ -49,17 +49,17 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages
             GetLoginData();
 
 
-            emailIdTextBox.Click();
-            emailIdTextBox.Clear();
-            emailIdTextBox.SendKeys(loginData.email);
+            emailIdTextBox?.Click();
+            emailIdTextBox?.Clear();
+            emailIdTextBox?.SendKeys(loginData.email);
 
 
-            passWordTextBox.Click();
-            passWordTextBox.Clear();
-            passWordTextBox.SendKeys(loginData.password);
+            passWordTextBox?.Click();
+            passWordTextBox?.Clear();
+            passWordTextBox?.SendKeys(loginData.password);
 
 
-            loginButton.Click();
+            loginButton?.Click();
 
         }
     }

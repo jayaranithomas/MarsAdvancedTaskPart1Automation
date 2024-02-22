@@ -16,8 +16,8 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Utilities
 
         public static IWebDriver driver;
 
-        HomePage homeObj;
-        LoginWindow loginObj;
+        HomePage? homeObj;
+        LoginWindow? loginObj;
 
 
         [SetUp]
@@ -27,8 +27,8 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Utilities
             homeObj = new HomePage();
             loginObj = new LoginWindow();
             Initialize();
-            homeObj.SignInAction();
-            loginObj.LoginActions();
+            homeObj?.SignInAction();
+            loginObj?.LoginActions();
 
             Thread.Sleep(1000);
         }
@@ -43,7 +43,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Utilities
         }
         public void Close()
         {
-            driver.Quit();
+            driver?.Quit();
         }
 
 

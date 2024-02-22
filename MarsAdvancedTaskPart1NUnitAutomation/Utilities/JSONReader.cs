@@ -19,7 +19,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Utilities
             using StreamReader reader = new(jsonFilePath);
             var json = reader.ReadToEnd();
 
-            List<LanguageDM> language = JsonConvert.DeserializeObject<List<LanguageDM>>(json);
+            List<LanguageDM> language = JsonConvert.DeserializeObject<List<LanguageDM>>(json)!;
             return language;
         }
         //public List<SkillsDM> ReadSJsonData()
@@ -35,7 +35,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Utilities
             using StreamReader reader = new(jsonFilePath);
             var json = reader.ReadToEnd();
 
-            LoginDM loginInfo = JsonConvert.DeserializeObject<LoginDM>(json);
+            LoginDM loginInfo = JsonConvert.DeserializeObject<LoginDM>(json)!;
             return loginInfo;
         }
         public void SetDataPath(string typeDM)

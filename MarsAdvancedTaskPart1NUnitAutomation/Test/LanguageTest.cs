@@ -20,7 +20,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         LanguageFeatures languageFeaturesObj;
         ProfileNavigationTabs profileNavigationTabsObj;
         LanguageDM languageDM;
-        GenerateReport generateReport;
+        GenerateReport? generateReport;
         public LanguageTest()
         {
             languageList = new List<LanguageDM>();
@@ -34,7 +34,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         public void ReadJSON()
         {
             generateReport = new GenerateReport();
-            generateReport.GenerateExtentReport(@"Reports\LanguageExtentReport.html");
+            generateReport?.GenerateExtentReport(@"Reports\LanguageExtentReport.html");
             JSONReader jsonObj = new JSONReader();
             jsonObj.SetDataPath("language");
             languageList = jsonObj.ReadLJsonData();
@@ -45,8 +45,8 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         [SetUp]
         public void SetUp()
         {
-            generateReport.CreateTest();
-            profileNavigationTabsObj.SelectLanguageTab();
+            generateReport?.CreateTest();
+            profileNavigationTabsObj?.SelectLanguageTab();
         }
 
 
@@ -121,7 +121,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
 
         public void AfterTest()
         {
-            generateReport.UpdateTest();
+            generateReport?.UpdateTest();
             Close();
 
         }
