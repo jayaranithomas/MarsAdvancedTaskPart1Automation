@@ -19,14 +19,14 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         List<LanguageDM> languageList;
         LanguageFeatures languageFeaturesObj;
         ProfileNavigationTabs profileNavigationTabsObj;
-        LanguageDM languageDM;
+      //  LanguageDM languageDM;
         GenerateReport? generateReport;
         public LanguageTest()
         {
             languageList = new List<LanguageDM>();
             languageFeaturesObj = new LanguageFeatures();
             profileNavigationTabsObj = new ProfileNavigationTabs();
-            languageDM = new LanguageDM();
+           // languageDM = new LanguageDM();
         }
 
 
@@ -62,38 +62,22 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         public void TestCreateNewLanguageRecord()
         {
 
-
-
-            languageDM.SetData(languageList[0]);
-            languageDM = languageDM.GetData();
-
-            languageFeaturesObj.AddNewLanguage(languageDM);
-
-            
-
+            languageFeaturesObj.AddNewLanguage(languageList[0]);
+                        
         }
 
         [Test, Order(3), Description("This test adds new Language Record with NULL data in both fields")]
         public void TestCreateNewLanguageRecordWithAllNullData()
         {
 
-
-            languageDM.SetData(languageList[1]);
-            languageDM = languageDM.GetData();
-
-
-            languageFeaturesObj.AddNewLanguageRecordWithAllNullData(languageDM);
+            languageFeaturesObj.AddNewLanguageRecordWithInsufficientData(languageList[1]);
         }
 
         [Test, Order(4), Description("This test adds new Language Record without selecting any level and providing valid data in language text box")]
         public void TestCreateNewLanguageRecordWithLevelNotSelected()
         {
 
-
-            languageDM.SetData(languageList[2]);
-            languageDM = languageDM.GetData();
-
-            languageFeaturesObj.AddNewLanguageRecordWithLevelNotSelected(languageDM);
+            languageFeaturesObj.AddNewLanguageRecordWithInsufficientData(languageList[2]);
 
         }
 
@@ -101,19 +85,50 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         public void TestCreateNewLanguageRecordWithValidLevelAndEmptyTextBox()
         {
 
-            languageDM.SetData(languageList[3]);
-            languageDM = languageDM.GetData();
 
-            languageFeaturesObj.AddNewLanguageRecordWithValidLevelAndEmptyTextBox(languageDM);
+            languageFeaturesObj.AddNewLanguageRecordWithInsufficientData(languageList[3]);
 
         }
         [Test, Order(6), Description("This test adds an already existing Language Record")]
         public void TestCreateAlreadyExistingLanguageRecord()
         {
-            languageDM.SetData(languageList[4]);
-            languageDM = languageDM.GetData();
 
-            languageFeaturesObj.AddAlreadyExistingLanguageRecord(languageDM);
+            languageFeaturesObj.AddAlreadyExistingLanguageRecord(languageList[0]);
+
+        }
+        [Test, Order(7), Description("This test adds a duplicate Language with different level")]
+        public void TestCreateDuplicateLanguageWithDifferentLevel()
+        {
+
+            languageFeaturesObj.AddDuplicateLanguageWithDifferentLevel(languageList[4]);
+
+        }
+        [Test, Order(8), Description("This test adds a new Language Name with Special Characters and Numbers")]
+        public void TestCreateLanguageRecordWithSpecialCharactersAndNumbers()
+        {
+
+            languageFeaturesObj.AddNewLanguage(languageList[5]);
+
+        }
+        [Test, Order(9), Description("This test adds a new Language Name with more than 500 characters")]
+        public void TestCreateLanguageRecordWithlLongLanguageName()
+        {
+
+            languageFeaturesObj.AddNewLanguage(languageList[6]);
+
+        }
+        [Test, Order(10), Description("This test adds a new Language Name with more than 500 characters")]
+        public void TestCreateLanguageRecordWithOnlySpacesInLanguageTextBox()
+        {
+
+            languageFeaturesObj.AddNewLanguage(languageList[7]);
+
+        }
+        [Test, Order(11), Description("This test tries to add fifth language record")]
+        public void TestCreateFifthLanguageRecord()
+        {
+
+            languageFeaturesObj.AddFifthLanguage();
 
         }
 
