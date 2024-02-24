@@ -95,29 +95,31 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.ProfileOverview.ProfileNavi
             editButton.Click();
 
             RenderUpdateComponents();
-
-            if (string.IsNullOrEmpty(languageDM.language))
+            if (!languageDM.language.Equals("No Change"))
             {
-                var actions = new OpenQA.Selenium.Interactions.Actions(driver);
-                actions.Click(languageTextBox);
-                actions.KeyDown(Keys.Control).SendKeys("a").KeyUp(Keys.Control).SendKeys(Keys.Delete);
-                actions.Perform();
+                if (string.IsNullOrEmpty(languageDM.language))
+                {
+                    var actions = new OpenQA.Selenium.Interactions.Actions(driver);
+                    actions.Click(languageTextBox);
+                    actions.KeyDown(Keys.Control).SendKeys("a").KeyUp(Keys.Control).SendKeys(Keys.Delete);
+                    actions.Perform();
+                }
+                else
+                {
+                    languageTextBox?.Clear();
+                    languageTextBox?.SendKeys(languageDM.language);
+                }
             }
-            else
+            if (!languageDM.level.Equals("No Change"))
             {
-                languageTextBox?.Clear();
-                languageTextBox?.SendKeys(languageDM.language);
+                chooseLevelDD?.Click();
+                if (!string.IsNullOrEmpty(languageDM.level))
+                    chooseLevelDD?.SendKeys(languageDM.level);
+
+                else
+                    chooseLevelDD?.SendKeys("Language Level");
+                chooseLevelDD?.Click();
             }
-
-
-            chooseLevelDD?.Click();
-            if (!string.IsNullOrEmpty(languageDM.level))
-                chooseLevelDD?.SendKeys(languageDM.level);
-
-            else
-                chooseLevelDD?.SendKeys("Language Level");
-            chooseLevelDD?.Click();
-
 
 
             Thread.Sleep(2000);

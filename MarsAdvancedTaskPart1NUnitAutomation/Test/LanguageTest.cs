@@ -19,14 +19,12 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         List<LanguageDM> languageList;
         LanguageFeatures languageFeaturesObj;
         ProfileNavigationTabs profileNavigationTabsObj;
-      //  LanguageDM languageDM;
         GenerateReport? generateReport;
         public LanguageTest()
         {
             languageList = new List<LanguageDM>();
             languageFeaturesObj = new LanguageFeatures();
             profileNavigationTabsObj = new ProfileNavigationTabs();
-           // languageDM = new LanguageDM();
         }
 
 
@@ -129,6 +127,105 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         {
 
             languageFeaturesObj.AddFifthLanguage();
+
+        }
+        [Test, Order(12), Description("This test Cancels a Language record before adding")]
+        public void TestCancelAddLanguageRecord()
+        {
+
+            languageFeaturesObj.CancelAddLanguageRecord(languageList[8]);
+
+        }
+        [Test, Order(13), Description("This test updates an existing Language Record with all fields edited")]
+        public void TestUpdateLanguageRecordWithBothFieldsEdited()
+        {
+
+            languageFeaturesObj.UpdateExistingLanguageRecordWithFieldsEdited(languageList[9]);
+
+        }
+        [Test, Order(14), Description("This test updates an existing Language Record without editing any fields")]
+        public void TestUpdateLanguageRecordWithNoFieldsEdited()
+        {
+
+            languageFeaturesObj.UpdateExistingLanguageRecordWithNoFieldsEdited();
+
+        }
+        [Test, Order(15), Description("This test updates existing Language Record with NULL data in both fields")]
+        public void TestUpdateLanguageRecordWithAllNullData()
+        {
+
+            languageFeaturesObj.UpdateLanguageRecordWithInsufficientData(languageList[1]);
+        }
+        [Test, Order(16), Description("This test updates existing Language Record by deleting the language in text box and not changing the level")]
+        public void TestUpdateLanguageRecordWithValidLevelAndEmptyTextBox()
+        {
+
+
+            languageFeaturesObj.UpdateLanguageRecordWithInsufficientData(languageList[3]);
+
+        }
+        [Test, Order(17), Description("This test updates existing Language Record without editing language in text box and selecting any level")]
+        public void TestUpdateLanguageRecordWithoutSelectingLevel()
+        {
+
+
+            languageFeaturesObj.UpdateLanguageRecordWithInsufficientData(languageList[10]);
+
+        }
+        [Test, Order(18), Description("This test updates existing Language Record by changing only the language")]
+        public void TestUpdateLanguageRecordByChangingOnlyLanguage()
+        {
+
+
+            languageFeaturesObj.UpdateExistingLanguageRecordWithFieldsEdited(languageList[11]);
+
+        }
+        [Test, Order(19), Description("This test updates existing Language Record by changing only level")]
+        public void TestUpdateLanguageRecordByChangingOnlyLevel()
+        {
+
+
+            languageFeaturesObj.UpdateExistingLanguageRecordWithFieldsEdited(languageList[12]);
+
+        }
+        [Test, Order(20), Description("This test updates existing Language Record with an existing language name with different level")]
+        public void TestUpdateLanguageRecordWithExistingLanguageName()
+        {
+
+
+            languageFeaturesObj.UpdateExistingLanguageRecordWithExistingLanguageName(languageList[13], languageList[14]);
+
+        }
+        [Test, Order(21), Description("This test updates existing Language Record with Special Characters and Numbers")]
+        public void TestUpdateLanguageRecordWithSpecialCharacters()
+        {
+
+
+            languageFeaturesObj.UpdateExistingLanguageRecordWithFieldsEdited(languageList[15]);
+
+        }
+        [Test, Order(22), Description("This test updates existing Language Record with more than 500 characters")]
+        public void TestUpdateLanguageRecordWithLongLanguageName()
+        {
+
+
+            languageFeaturesObj.UpdateExistingLanguageRecordWithFieldsEdited(languageList[16]);
+
+        }
+        [Test, Order(23), Description("This test updates existing Language Record with more than 500 characters")]
+
+        public void TestUpdateLanguageRecordWithOnlySpacesInLanguageName()
+        {
+
+
+            languageFeaturesObj.UpdateExistingLanguageRecordWithFieldsEdited(languageList[17]);
+
+        }
+        [Test, Order(24), Description("This test Cancels a Language record before updating")]
+        public void TestCancelUpdateLanguageRecord()
+        {
+
+            languageFeaturesObj.CancelUpdateLanguageRecord(languageList[18]);
 
         }
 

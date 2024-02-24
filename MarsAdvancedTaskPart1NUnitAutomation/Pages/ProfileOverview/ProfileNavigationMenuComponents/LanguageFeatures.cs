@@ -41,10 +41,16 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.ProfileOverview.ProfileNavi
             Console.WriteLine(actualMessage);
 
         }
-        //To return the last entered Language
+        //To get the last entered Language
         public void GetLastLanguageName()
         {
             IWebElement languageNameTextBox = driver.FindElement(By.XPath("//div[@data-tab='first']//tbody[last()]//td[1]"));
+            languageName = languageNameTextBox.Text;
+        }
+        //To get the first entered Language
+        public void GetFirstLanguageName()
+        {
+            IWebElement languageNameTextBox = driver.FindElement(By.XPath("//div[@data-tab='first']//tbody[1]//td[1]"));
             languageName = languageNameTextBox.Text;
         }
         public void AddNewLanguage(LanguageDM languageDM)
@@ -53,7 +59,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.ProfileOverview.ProfileNavi
             languageRendering.AddLanguage(languageDM);
 
             CapturePopupMessage();
-            
+
             GetLastLanguageName();
 
             if (!string.IsNullOrEmpty(languageName))
@@ -62,6 +68,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.ProfileOverview.ProfileNavi
                 expectedMessage = "has been added to your languages";
 
             Assert.That(actualMessage.Equals(expectedMessage), "The language record has not been added successfully");
+
         }
         public void DeleteAllLanguageRecords()
         {
@@ -138,6 +145,108 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.ProfileOverview.ProfileNavi
                 }
             }
 
+        }
+        public void CancelAddLanguageRecord(LanguageDM languageDM)
+        {
+            cancelFlag = 1;
+
+            int rowcount = driver.FindElements(By.XPath("//div[@data-tab='first']//tbody")).Count;
+
+            if (rowcount == 4)
+            {
+                IWebElement deleteButton = driver.FindElement(By.XPath("//div[@data-tab='first']//tbody[last()]//i[@class='remove icon']"));
+                deleteButton.Click();
+
+            }
+
+            languageRendering.SetCancelFlag(cancelFlag);
+            Thread.Sleep(2000);
+
+            languageRendering.AddLanguage(languageDM);    
+            cancelFlag = 0;
+
+           
+            GetLastLanguageName();
+
+            if (!languageName.Equals("Urdu"))
+            {
+                Console.WriteLine("Language record cancelled before adding");
+                Assert.That(!languageName.Equals("Urdu"), "Language record not cancelled successfully");
+
+            }
+        }
+        public void UpdateExistingLanguageRecordWithFieldsEdited(LanguageDM languageDM)
+        {
+            languageRendering.EditLanguageRecord(languageDM);
+
+            CapturePopupMessage();
+            GetFirstLanguageName();
+            if (!string.IsNullOrEmpty(languageName))
+                expectedMessage = languageName + " has been updated to your languages";
+            else
+                expectedMessage = "has been updated to your languages";
+
+            Assert.That(actualMessage.Equals(expectedMessage), "The language record has not been updated successfully");
+
+        }
+        public void UpdateExistingLanguageRecordWithNoFieldsEdited()
+        {
+            IWebElement editButton = driver.FindElement(By.XPath("//div[@data-tab='first']//tbody[1]//i[@class='outline write icon']"));
+            editButton.Click();
+
+            IWebElement updateButton = driver.FindElement(By.XPath("//div[@data-tab='first']//input[@value='Update']"));
+            updateButton.Click();
+
+            CapturePopupMessage();
+
+            expectedMessage = "This language is already added to your language list.";
+
+            Assert.That(actualMessage.Equals(expectedMessage), "The language record has been updated successfully");
+
+        }
+        public void UpdateLanguageRecordWithInsufficientData(LanguageDM languageDM)
+        {
+            languageRendering.EditLanguageRecord(languageDM);
+
+            CapturePopupMessage();
+            expectedMessage = "Please enter language and level";
+
+            Assert.That(actualMessage.Equals(expectedMessage), "The language record has been updated successfully");
+        }
+        public void UpdateExistingLanguageRecordWithExistingLanguageName(LanguageDM languageDM1, LanguageDM languageDM2)
+        {
+            int rowcount = driver.FindElements(By.XPath("//div[@data-tab='first']//tbody")).Count;
+
+            if (rowcount == 4)
+            {
+                IWebElement deleteButton = driver.FindElement(By.XPath("//div[@data-tab='first']//tbody[last()]//i[@class='remove icon']"));
+                deleteButton.Click();
+
+            }
+            languageRendering.AddLanguage(languageDM1);
+            Thread.Sleep(3000);
+            UpdateExistingLanguageRecordWithFieldsEdited(languageDM2);
+
+        }
+        public void CancelUpdateLanguageRecord(LanguageDM languageDM)
+        {
+            cancelFlag = 1;
+
+            languageRendering.SetCancelFlag(cancelFlag);
+            Thread.Sleep(2000);
+
+            languageRendering.EditLanguageRecord(languageDM);
+            cancelFlag = 0;
+
+
+            GetLastLanguageName();
+
+            if (!languageName.Equals("Japanese"))
+            {
+                Console.WriteLine("Language record cancelled before Updating");
+                Assert.That(!languageName.Equals("Japanese"), "Language record not cancelled successfully");
+
+            }
         }
 
     }
