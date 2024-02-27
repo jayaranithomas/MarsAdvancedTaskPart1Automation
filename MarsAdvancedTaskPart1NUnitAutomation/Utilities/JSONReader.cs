@@ -22,14 +22,14 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Utilities
             List<LanguageDM> language = JsonConvert.DeserializeObject<List<LanguageDM>>(json)!;
             return language;
         }
-        //public List<SkillsDM> ReadSJsonData()
-        //{
-        //    using StreamReader reader = new(jsonFilePath);
-        //    var json = reader.ReadToEnd();
+        public List<SkillsDM> ReadSJsonData()
+        {
+            using StreamReader reader = new(jsonFilePath);
+            var json = reader.ReadToEnd();
 
-        //    List<SkillsDM> skills = JsonConvert.DeserializeObject<List<SkillsDM>>(json);
-        //    return skills;
-        //}
+            List<SkillsDM> skillsList = JsonConvert.DeserializeObject<List<SkillsDM>>(json)!;
+            return skillsList;
+        }
         public LoginDM ReadLoginJsonData()
         {
             using StreamReader reader = new(jsonFilePath);

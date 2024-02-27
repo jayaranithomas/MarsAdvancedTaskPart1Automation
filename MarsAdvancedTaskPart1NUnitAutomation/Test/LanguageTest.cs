@@ -101,21 +101,21 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
             languageFeaturesObj.AddDuplicateLanguageWithDifferentLevel(languageList[4]);
 
         }
-        [Test, Order(8), Description("This test adds a new Language Name with Special Characters and Numbers")]
+        [Test, Order(8), Description("This test adds a new Language with Special Characters and Numbers")]
         public void TestCreateLanguageRecordWithSpecialCharactersAndNumbers()
         {
 
             languageFeaturesObj.AddNewLanguage(languageList[5]);
 
         }
-        [Test, Order(9), Description("This test adds a new Language Name with more than 500 characters")]
+        [Test, Order(9), Description("This test adds a new Language with more than 500 characters")]
         public void TestCreateLanguageRecordWithlLongLanguageName()
         {
 
             languageFeaturesObj.AddNewLanguage(languageList[6]);
 
         }
-        [Test, Order(10), Description("This test adds a new Language Name with more than 500 characters")]
+        [Test, Order(10), Description("This test adds a new Language with Only Spaces")]
         public void TestCreateLanguageRecordWithOnlySpacesInLanguageTextBox()
         {
 
@@ -164,7 +164,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
             languageFeaturesObj.UpdateLanguageRecordWithInsufficientData(languageList[3]);
 
         }
-        [Test, Order(17), Description("This test updates existing Language Record without editing language in text box and selecting any level")]
+        [Test, Order(17), Description("This test updates existing Language Record without editing language in text box and not selecting any level")]
         public void TestUpdateLanguageRecordWithoutSelectingLevel()
         {
 
@@ -212,7 +212,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
             languageFeaturesObj.UpdateExistingLanguageRecordWithFieldsEdited(languageList[16]);
 
         }
-        [Test, Order(23), Description("This test updates existing Language Record with more than 500 characters")]
+        [Test, Order(23), Description("This test updates existing Language Record with Spaces Only")]
 
         public void TestUpdateLanguageRecordWithOnlySpacesInLanguageName()
         {

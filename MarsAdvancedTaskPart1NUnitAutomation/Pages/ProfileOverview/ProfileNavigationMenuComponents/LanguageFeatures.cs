@@ -21,9 +21,8 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.ProfileOverview.ProfileNavi
 
 
         int cancelFlag = 0;
-        ProfileNavigationTabs profileNavigationObj = new ProfileNavigationTabs();
+       // ProfileNavigationTabs profileNavigationObj = new ProfileNavigationTabs();
 
-        LanguageAssertHelper languageAssertHelper = new LanguageAssertHelper();
         LanguageRenderingComponent languageRendering = new LanguageRenderingComponent();
 
         //To capture the pop up message
