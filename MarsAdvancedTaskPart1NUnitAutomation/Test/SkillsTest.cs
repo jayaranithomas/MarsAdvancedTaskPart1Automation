@@ -58,7 +58,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         [Test, Order(2), Description("This test adds a new Skill Record")]
         public void TestCreateNewSkillRecord()
         {
-
+            
             skillsFeaturesObj.AddNewSkill(skillList[0]);
 
         }
