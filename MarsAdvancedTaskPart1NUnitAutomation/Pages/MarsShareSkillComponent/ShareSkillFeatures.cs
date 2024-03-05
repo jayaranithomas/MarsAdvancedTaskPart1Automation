@@ -26,7 +26,6 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.MarsShareSkillComponent
 
         IWebElement? shareSkillButton;
         IWebElement? tag;
-        int cancelFlag = 0;
 
         ShareSkillRenderingComponent shareSkillRendering = new ShareSkillRenderingComponent();
         //To navigate to ServiceListing Page
@@ -106,7 +105,6 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.MarsShareSkillComponent
             shareSkillRendering.AddShareSkills(shareSkillDM);
 
             expectedMessage = "Service Listing Added successfully";
-
             Assert.Pass("Service Listing Added successfully");
 
         }
@@ -168,7 +166,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.MarsShareSkillComponent
             tag = shareSkillRendering.TagLocator(index);
             for (int i = 1; i <= 10; i++)
             {
-                tag?.SendKeys("tag"+i.ToString()+"");
+                tag?.SendKeys("tag" + i.ToString() + "");
                 tag?.SendKeys(Keys.Enter);
             }
             var tagCount = driver.FindElements(By.XPath("//span[@class='ReactTags__tag']")).Count;
@@ -229,6 +227,12 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.MarsShareSkillComponent
 
             Assert.That(tagCount == 0, "The tag was not deleted");
 
+        }
+        public void CancelShareSkillListing(ShareSkillsDM shareSkillDM)
+        {
+            shareSkillRendering.SetCancelFlag(1);
+            shareSkillRendering.AddShareSkills(shareSkillDM);
+            Assert.Pass("Service Listing cancelled");
         }
     }
 }

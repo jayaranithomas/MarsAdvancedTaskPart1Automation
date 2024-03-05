@@ -29,7 +29,6 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.ReportClass
             var actualPath = path.Substring(0, path.LastIndexOf("bin"));
             var projectPath = new Uri(actualPath).LocalPath;
             Directory.CreateDirectory(projectPath.ToString() + "Reports");
-            //var reportPath = projectPath + @"Reports\ExtentReport.html";
             var reportPath = projectPath + localPath;
             var htmlReporter = new ExtentSparkReporter(reportPath);
             extent = new ExtentReports();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MarsAdvancedTaskPart1NUnitAutomation.DataModel
 {
-    
+
     public class ShareSkillsDM
     {
         public string title { get; set; } = string.Empty;

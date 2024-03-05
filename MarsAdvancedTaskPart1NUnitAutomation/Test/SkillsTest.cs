@@ -73,7 +73,6 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         {
 
             skillsFeaturesObj.AddNewSkillRecordWithInsufficientData(skillList[2]);
-
         }
         [Test, Order(5), Description("This test adds new Skill Record without entering any skill in text box and selecting a valid level from dropdown")]
         public void TestCreateNewSkillRecordWithValidLevelAndEmptyTextBox()
@@ -144,6 +143,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         {
 
             skillsFeaturesObj.UpdateSkillRecordWithInsufficientData(skillList[1]);
+
         }
         [Test, Order(15), Description("This test updates existing Skill Record by deleting the skill in text box and not changing the level")]
         public void TestUpdateSkillRecordWithValidLevelAndEmptyTextBox()
@@ -157,14 +157,12 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         public void TestUpdateSkillRecordWithoutSelectingLevel()
         {
 
-
             skillsFeaturesObj.UpdateSkillRecordWithInsufficientData(skillList[10]);
 
         }
         [Test, Order(17), Description("This test updates existing Skill Record by changing only the skill")]
         public void TestUpdateSkillRecordByChangingOnlySkill()
         {
-
 
             skillsFeaturesObj.UpdateExistingSkillRecordWithFieldsEdited(skillList[11]);
 
@@ -173,14 +171,12 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         public void TestUpdateSkillRecordByChangingOnlyLevel()
         {
 
-
             skillsFeaturesObj.UpdateExistingSkillRecordWithFieldsEdited(skillList[12]);
 
         }
         [Test, Order(19), Description("This test updates existing Skill Record with an existing skill name with different level")]
         public void TestUpdateSkillRecordWithExistingSkillName()
         {
-
 
             skillsFeaturesObj.UpdateExistingSkillRecordWithExistingSkillName(skillList[13], skillList[14]);
 
@@ -189,14 +185,12 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         public void TestUpdateSkillRecordWithSpecialCharacters()
         {
 
-
             skillsFeaturesObj.UpdateExistingSkillRecordWithFieldsEdited(skillList[15]);
 
         }
         [Test, Order(21), Description("This test updates existing Skill Record with more than 500 characters")]
         public void TestUpdateLanguageRecordWithLongLanguageName()
         {
-
 
             skillsFeaturesObj.UpdateExistingSkillRecordWithFieldsEdited(skillList[16]);
 
@@ -205,7 +199,6 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
 
         public void TestUpdateSkillRecordWithOnlySpacesInSkill()
         {
-
 
             skillsFeaturesObj.UpdateExistingSkillRecordWithFieldsEdited(skillList[17]);
 

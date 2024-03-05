@@ -12,6 +12,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.ReportClass
     {
         public string Capture(IWebDriver driver, string screenShotName)
         {
+
             ITakesScreenshot ts = (ITakesScreenshot)driver;
 
             Screenshot screenshot = ts.GetScreenshot();
@@ -22,8 +23,8 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.ReportClass
             var finalpth = pth.Substring(0, pth.LastIndexOf("bin")) + @"Reports\\Screenshots\\" + screenShotName;
             var localpath = new Uri(finalpth).LocalPath;
             screenshot.SaveAsFile(localpath);
-            return reportPath;
 
+            return reportPath;
         }
     }
 }

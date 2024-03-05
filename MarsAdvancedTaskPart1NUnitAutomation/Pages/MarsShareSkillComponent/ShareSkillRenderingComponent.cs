@@ -25,21 +25,24 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.MarsShareSkillComponent
         IWebElement? locationtype;
         IWebElement? startdate;
         IWebElement? enddate;
-        IWebElement? skilltrade;
+        IWebElement? skilltradeT;
+        IWebElement? skilltradeF;
         IWebElement? credit;
         IWebElement? worksamples;
         IWebElement? activeT;
         IWebElement? activeF;
         IWebElement? saveButton;
         IWebElement? cancelButton;
+
         string titleText = string.Empty;
         string descriptionText = string.Empty;
+        int cancelFlag = 0;
 
         public void RenderShareSkillComponents()
         {
             try
             {
-                Wait.WaitToBeVisible("Name", "title", 30);
+                Wait.WaitToBeVisible("Name", "title", 15);
                 title = driver.FindElement(By.Name("title"));
                 description = driver.FindElement(By.Name("description"));
                 category = driver.FindElement(By.Name("categoryId"));
@@ -49,7 +52,8 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.MarsShareSkillComponent
                 locationtype = driver.FindElement(By.Name("locationType"));
                 startdate = driver.FindElement(By.Name("startDate"));
                 enddate = driver.FindElement(By.Name("endDate"));
-                skilltrade = driver.FindElement(By.Name("skillTrades"));
+                skilltradeT = driver.FindElement(By.XPath("//input[@name='skillTrades'][@value='true']"));
+                skilltradeF = driver.FindElement(By.XPath("//input[@name='skillTrades'][@value='false']"));
                 worksamples = driver.FindElement(By.XPath("//i[@class='huge plus circle icon padding-25']"));
                 activeT = driver.FindElement(By.XPath("//input[@name='isActive'][@value='true']"));
                 activeF = driver.FindElement(By.XPath("//input[@name='isActive'][@value='false']"));
@@ -67,6 +71,19 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.MarsShareSkillComponent
             try
             {
                 subcategory = driver.FindElement(By.Name("subcategoryId"));
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+        }
+        public void RenderCreditComponent()
+        {
+            try
+            {
+                credit = driver.FindElement(By.Name("charge"));
 
             }
             catch (Exception ex)
@@ -99,6 +116,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.MarsShareSkillComponent
             }
             return tagRemoveList[index];
         }
+
         public string GetTitle()
         {
             return titleText;
@@ -106,6 +124,10 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.MarsShareSkillComponent
         public string GetDescription()
         {
             return descriptionText;
+        }
+        public void SetCancelFlag(int flag)
+        {
+            this.cancelFlag = flag;
         }
 
 
@@ -136,7 +158,6 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.MarsShareSkillComponent
             if (shareSkillsDM.servicetype.Equals("1"))
             {
                 servicetype1?.Click();
-                //Thread.Sleep(3000);
             }
             else if (shareSkillsDM.servicetype.Equals("0"))
             {
@@ -147,46 +168,39 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.MarsShareSkillComponent
             {
                 locationtype?.SendKeys(shareSkillsDM.locationtype);
                 locationtype?.Click();
-                //Thread.Sleep(3000);
             }
 
             if (!string.IsNullOrEmpty(shareSkillsDM.startdate))
             {
                 startdate?.SendKeys(shareSkillsDM.startdate);
-                //Thread.Sleep(3000);
             }
 
             if (!string.IsNullOrEmpty(shareSkillsDM.enddate))
                 enddate?.SendKeys(shareSkillsDM.enddate);
 
-            if (!string.IsNullOrEmpty(shareSkillsDM.skilltrade))
+            if (shareSkillsDM.skilltrade.Equals("true"))
             {
-                skilltrade?.SendKeys(shareSkillsDM.skilltrade);
-                skilltrade?.Click();
-                if (shareSkillsDM.skilltrade.Equals("true"))
-                {
-                    tagList?[1].SendKeys(shareSkillsDM.skillexchange);
-                    tagList?[1].SendKeys(Keys.Enter);
-                }
-                else
-                {
-                    credit?.SendKeys(shareSkillsDM.credit);
-                }
+                skilltradeT?.Click();
+                tagList?[1].SendKeys(shareSkillsDM.skillexchange);
+                tagList?[1].SendKeys(Keys.Enter);
+            }
+            else
+            {
+                skilltradeF?.Click();
+                RenderCreditComponent();
+                credit?.SendKeys(shareSkillsDM.credit);
             }
 
             if (!string.IsNullOrEmpty(shareSkillsDM.worksamples))
             {
-                //string filePath = @"F:\Jaya_IC\sample1.txt";
-                //worksamples?.Click();
-                // Thread.Sleep(2000);
-                //worksamples?.SendKeys(filePath);
-                // Thread.Sleep(2000);
+                string filePath = @"F:\sample1.txt";
+                worksamples?.Click();
+                worksamples?.SendKeys(filePath);
             }
 
             if (shareSkillsDM.active.Equals("true"))
             {
                 activeT?.Click();
-                //Thread.Sleep(3000);
             }
             else if (shareSkillsDM.active.Equals("false"))
             {
@@ -199,7 +213,13 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.MarsShareSkillComponent
             if (!string.IsNullOrEmpty(description?.Text))
                 descriptionText = description.Text;
 
-            saveButton?.Click();
+            if (cancelFlag == 0)
+                saveButton?.Click();
+            else
+            {
+                cancelFlag = 0;
+                cancelButton?.Click();
+            }
         }
     }
 }

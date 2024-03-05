@@ -17,7 +17,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
     [TestFixture]
     public class ShareSkillsTest : CommonDriver
     {
-
+        bool skipTearDown = false;
         List<ShareSkillsDM> shareSkillList;
         ShareSkillFeatures? shareSkillFeaturesObj;
         GenerateReport? generateReport;
@@ -45,7 +45,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         {
             generateReport?.CreateTest();
             shareSkillFeaturesObj = new ShareSkillFeatures();
-
+            skipTearDown = false;
         }
 
 
@@ -168,14 +168,44 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
             shareSkillFeaturesObj?.AddShareSkillWithInsufficientData(shareSkillList[12]);
 
         }
+        [Test, Order(19), Description("This test assigns an end date older than the start date in Share skill Listing")]
+        public void TestAddShareSkillListingWithEndDateOlderThanStartDate()
+        {
+            shareSkillFeaturesObj?.AddShareSkillWithInsufficientData(shareSkillList[13]);
+
+        }
+        [Test, Order(20), Description("This test adds a Share skill Listing without entering any Skill-exchange tags")]
+        public void TestAddShareSkillListingWithoutAnySkillExchangeTags()
+        {
+            shareSkillFeaturesObj?.AddShareSkillWithInsufficientData(shareSkillList[14]);
+
+        }
+        [Test, Order(21), Description("This test adds a Share skill Listing without uploading any work samples")]
+        public void TestAddShareSkillListingWithoutUploadingWorkSample()
+        {
+            shareSkillFeaturesObj?.AddNewShareSkill(shareSkillList[0]);
+
+        }
+        [Test, Order(22), Description("This test adds a Share skill Listing by selecting Credit for Skill-Trade")]
+        public void TestAddShareSkillListingBySelectingCredit()
+        {
+            shareSkillFeaturesObj?.AddNewShareSkill(shareSkillList[15]);
+
+        }
+        [Test, Order(23), Description("This test cancels a Share skill Listing before adding")]
+        public void TestCancelShareSkillListing()
+        {
+            skipTearDown = true;
+            shareSkillFeaturesObj?.CancelShareSkillListing(shareSkillList[15]);
+        }
 
         [TearDown]
 
         public void AfterTest()
         {
-            generateReport?.UpdateTest();
+            if (!skipTearDown)
+                generateReport?.UpdateTest();
             Close();
-
         }
     }
 }

@@ -499,7 +499,7 @@
           }
         }
       },
-      "NUnit/4.0.1": {
+      "NUnit/4.1.0": {
         "type": "package",
         "compile": {
           "lib/net6.0/nunit.framework.dll": {
@@ -578,7 +578,7 @@
           "buildTransitive/Selenium.WebDriver.targets": {}
         }
       },
-      "Selenium.WebDriver.ChromeDriver/121.0.6167.18400": {
+      "Selenium.WebDriver.ChromeDriver/122.0.6261.9400": {
         "type": "package",
         "build": {
           "build/Selenium.WebDriver.ChromeDriver.targets": {}
@@ -1533,10 +1533,10 @@
         "packageIcon.png"
       ]
     },
-    "NUnit/4.0.1": {
-      "sha512": "jNTHZ01hJsDNPDSBycoHpavFZUBf9vRVQLCyuo78LRrrFj6Ol/CeqK+NIeTk5d8Eycjk59KseWb7X5Ge6z7CgQ==",
+    "NUnit/4.1.0": {
+      "sha512": "MT/DpAhjtiytzhTgTqIhBuWx4y26PKfDepYUHUM+5uv4TsryHC2jwFo5e6NhWkApCm/G6kZ80dRjdJFuAxq3rg==",
       "type": "package",
-      "path": "nunit/4.0.1",
+      "path": "nunit/4.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1555,7 +1555,7 @@
         "lib/net6.0/nunit.framework.legacy.dll",
         "lib/net6.0/nunit.framework.legacy.xml",
         "lib/net6.0/nunit.framework.xml",
-        "nunit.4.0.1.nupkg.sha512",
+        "nunit.4.1.0.nupkg.sha512",
         "nunit.nuspec"
       ]
     },
@@ -1634,10 +1634,10 @@
         "selenium.webdriver.nuspec"
       ]
     },
-    "Selenium.WebDriver.ChromeDriver/121.0.6167.18400": {
-      "sha512": "XyFfkj7DYqgX/20q9QY5WcAJQ0B+cBtuRvZjkfBKh+HzT71L4K9+wPtA4dB5E8sT69zN8t6vkvKUtdTIBrR8Hg==",
+    "Selenium.WebDriver.ChromeDriver/122.0.6261.9400": {
+      "sha512": "u0kWy6d0mp0YxVVHg1+G6yuNi/2+O+eRejc3SdJ1Ep8akq4OsFBOw+VUsW9CAH2jIdX8DWBdsAcu2ZE6TFsA9g==",
       "type": "package",
-      "path": "selenium.webdriver.chromedriver/121.0.6167.18400",
+      "path": "selenium.webdriver.chromedriver/122.0.6261.9400",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1654,7 +1654,7 @@
         "driver/win32/LICENSE.chromedriver",
         "driver/win32/chromedriver.exe",
         "nupkg-icon.png",
-        "selenium.webdriver.chromedriver.121.0.6167.18400.nupkg.sha512",
+        "selenium.webdriver.chromedriver.122.0.6261.9400.nupkg.sha512",
         "selenium.webdriver.chromedriver.nuspec"
       ]
     },
@@ -2423,12 +2423,12 @@
     "net6.0": [
       "ExtentReports >= 5.0.2",
       "Microsoft.NET.Test.Sdk >= 17.9.0",
-      "NUnit >= 4.0.1",
+      "NUnit >= 4.1.0",
       "NUnit3TestAdapter >= 4.5.0",
       "Newtonsoft.Json >= 13.0.3",
       "Selenium.Support >= 4.18.1",
       "Selenium.WebDriver >= 4.18.1",
-      "Selenium.WebDriver.ChromeDriver >= 121.0.6167.18400",
+      "Selenium.WebDriver.ChromeDriver >= 122.0.6261.9400",
       "SeleniumExtras.WaitHelpers >= 1.0.2",
       "System.CodeDom >= 8.0.0",
       "System.Configuration.ConfigurationManager >= 8.0.0",
@@ -2485,7 +2485,7 @@
           },
           "NUnit": {
             "target": "Package",
-            "version": "[4.0.1, )"
+            "version": "[4.1.0, )"
           },
           "NUnit3TestAdapter": {
             "target": "Package",
@@ -2505,7 +2505,7 @@
           },
           "Selenium.WebDriver.ChromeDriver": {
             "target": "Package",
-            "version": "[121.0.6167.18400, )"
+            "version": "[122.0.6261.9400, )"
           },
           "SeleniumExtras.WaitHelpers": {
             "target": "Package",
