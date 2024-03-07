@@ -29,7 +29,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
 
 
         [OneTimeSetUp]
-        public void ReadJSON()
+        public void ReportAndJSONDataMethod()
         {
             generateReport = new GenerateReport();
             generateReport?.GenerateExtentReport(@"Reports\LanguageExtentReport.html");

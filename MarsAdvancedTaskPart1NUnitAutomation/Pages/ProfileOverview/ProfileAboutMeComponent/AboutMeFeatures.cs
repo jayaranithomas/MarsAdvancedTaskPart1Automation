@@ -19,8 +19,6 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.ProfileOverview.ProfileAbou
         AboutMeRenderingComponent aboutMeRendering = new AboutMeRenderingComponent();
 
 
-
-
         //To capture the pop up message
         public void CapturePopupMessage()
         {

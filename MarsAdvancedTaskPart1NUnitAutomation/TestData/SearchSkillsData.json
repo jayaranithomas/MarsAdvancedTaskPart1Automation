@@ -1,0 +1,37 @@
+﻿[
+  {
+    "searchskills": "testing",
+    "category": "",
+    "subcategory": "",
+    "searchuser": "",
+    "filter": ""
+  },
+  {
+    "searchskills": "",
+    "category": "Programming & Tech",
+    "subcategory": "",
+    "searchuser": "",
+    "filter": ""
+  },
+  {
+    "searchskills": "",
+    "category": "Programming & Tech",
+    "subcategory": "QA",
+    "searchuser": "",
+    "filter": ""
+  },
+  {
+    "searchskills": "testing",
+    "category": "Programming & Tech",
+    "subcategory": "QA",
+    "searchuser": "",
+    "filter": ""
+  },
+  {
+    "searchskills": "testing",
+    "category": "Programming & Tech",
+    "subcategory": "QA",
+    "searchuser": "rachel john",
+    "filter": ""
+  }
+]

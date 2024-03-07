@@ -38,6 +38,14 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Utilities
             List<ShareSkillsDM> shareSkillsList = JsonConvert.DeserializeObject<List<ShareSkillsDM>>(json)!;
             return shareSkillsList;
         }
+        public List<SearchSkillsDM> ReadSearchSkillsJsonData()
+        {
+            using StreamReader reader = new(jsonFilePath);
+            var json = reader.ReadToEnd();
+
+            List<SearchSkillsDM> searchSkillsList = JsonConvert.DeserializeObject<List<SearchSkillsDM>>(json)!;
+            return searchSkillsList;
+        }
         public LoginDM ReadLoginJsonData()
         {
             using StreamReader reader = new(jsonFilePath);
@@ -60,6 +68,8 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Utilities
                 jsonFilePath = projectPath + @"TestData\ShareSkillsData.json";
             else if (typeDM.Equals("login"))
                 jsonFilePath = projectPath + @"TestData\LoginData.json";
+            else if (typeDM.Equals("searchskills"))
+                jsonFilePath = projectPath + @"TestData\SearchSkillsData.json";
         }
     }
 }
