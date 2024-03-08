@@ -12,27 +12,24 @@ using MarsAdvancedTaskPart1NUnitAutomation.DataModel;
 
 namespace MarsAdvancedTaskPart1NUnitAutomation.Test
 {
-   
+
     [TestFixture]
     public class SearchSkill : CommonDriver
     {
-        List<SearchSkillsDM> searchSkillsList;
+        List<SearchSkillsDM>? searchSkillsList;
         SearchSkillFeatures? searchSkillFeaturesObj;
         GenerateReport? generateReport;
 
-        public SearchSkill()
-        {
-            searchSkillsList = new List<SearchSkillsDM>();
-        }
 
         [OneTimeSetUp]
         public void ReportAndJSONDataMethod()
         {
             generateReport = new GenerateReport();
+            searchSkillsList = new List<SearchSkillsDM>();
             generateReport?.GenerateExtentReport(@"Reports\SearchSkillExtentReport.html");
             JSONReader jsonObj = new JSONReader();
             jsonObj.SetDataPath("searchskills");
-            searchSkillsList = jsonObj.ReadSearchSkillsJsonData();
+            searchSkillsList = jsonObj.ReadSearchSkillsJsonData()!;
         }
 
 
@@ -48,28 +45,28 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         public void TestSearchSkillWithSkillName()
         {
 
-            searchSkillFeaturesObj?.SearchSkillWithSkillName(searchSkillsList?[0]);
+            searchSkillFeaturesObj?.SearchSkillWithSkillName(searchSkillsList![0]);
 
         }
-       [Test, Order(2), Description("This test searches for a skill under a specific category")]
+        [Test, Order(2), Description("This test searches for a skill under a specific category")]
         public void TestSearchSkillWithCategory()
         {
 
-            searchSkillFeaturesObj?.SearchSkillWithCategory(searchSkillsList?[1]);
+            searchSkillFeaturesObj?.SearchSkillWithCategory(searchSkillsList![1]);
 
         }
         [Test, Order(3), Description("This test searches for a skill under a specific category and subcategory")]
         public void TestSearchSkillWithCategoryAndSubcategory()
         {
 
-            searchSkillFeaturesObj?.SearchSkillWithCategoryAndSubcategory(searchSkillsList?[2]);
+            searchSkillFeaturesObj?.SearchSkillWithCategoryAndSubcategory(searchSkillsList![2]);
 
         }
         [Test, Order(4), Description("This test searches for a skill under a specific category and subcategory and skill name")]
         public void TestSearchSkillWithCategoryAndSubcategoryAndSkillName()
         {
 
-            searchSkillFeaturesObj?.SearchSkillWithCategoryAndSubcategoryAndSkillName(searchSkillsList?[3]);
+            searchSkillFeaturesObj?.SearchSkillWithCategoryAndSubcategoryAndSkillName(searchSkillsList![3]);
 
         }
         [Test, Order(5), Description("This test searches for a skill under a specific category, subcategory,skill name and user name")]
@@ -77,7 +74,23 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         public void TestSearchSkillWithCategoryAndSubcategoryAndSkillAndUserName()
         {
 
-            searchSkillFeaturesObj?.SearchSkillWithCategoryAndSubcategoryAndSkillAndUserName(searchSkillsList?[4]);
+            searchSkillFeaturesObj?.SearchSkillWithCategoryAndSubcategoryAndSkillAndUserName(searchSkillsList![4]);
+
+        }
+        [Test, Order(6), Description("This test searches for a skill under a specific category, subcategory,skill name, user name and using filter option")]
+
+        public void TestSearchSkillWithCategorySubcategoryUserNameFilterOptionOnline()
+        {
+
+            searchSkillFeaturesObj?.SearchSkillWithCategorySubcategoryUserNameFilterOptionOnline(searchSkillsList![5]);
+
+        }
+        [Test, Order(7), Description("This test searches for a skill under a specific category, subcategory,skill name, user name and using another filter option")]
+
+        public void TestSearchSkillWithCategorySubcategoryUserNameFilterOptionOnsite()
+        {
+
+            searchSkillFeaturesObj?.SearchSkillWithCategorySubcategoryUserNameFilterOptionOnsite(searchSkillsList![6]);
 
         }
 

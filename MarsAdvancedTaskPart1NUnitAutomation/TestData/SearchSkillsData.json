@@ -33,5 +33,19 @@
     "subcategory": "QA",
     "searchuser": "rachel john",
     "filter": ""
+  },
+  {
+    "searchskills": "",
+    "category": "Digital Marketing",
+    "subcategory": "Email Marketing",
+    "searchuser": "rachel john",
+    "filter": "Online"
+  },
+  {
+    "searchskills": "",
+    "category": "Digital Marketing",
+    "subcategory": "Email Marketing",
+    "searchuser": "rachel john",
+    "filter": "Onsite"
   }
 ]

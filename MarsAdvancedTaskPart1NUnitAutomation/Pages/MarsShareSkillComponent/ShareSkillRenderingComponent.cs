@@ -102,7 +102,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.MarsShareSkillComponent
             {
                 Console.WriteLine(ex);
             }
-            return tagList[index];
+            return tagList![index];
         }
         public IWebElement TagRemoveLocator(int index)
         {
@@ -114,7 +114,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.MarsShareSkillComponent
             {
                 Console.WriteLine(ex);
             }
-            return tagRemoveList[index];
+            return tagRemoveList![index];
         }
 
         public string GetTitle()
