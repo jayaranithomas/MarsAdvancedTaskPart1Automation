@@ -1,7 +1,7 @@
 ﻿using MarsAdvancedTaskPart1NUnitAutomation.DataModel;
-using MarsAdvancedTaskPart1NUnitAutomation.Pages.ProfileOverview.ProfileAboutMeComponent;
 using MarsAdvancedTaskPart1NUnitAutomation.Pages.ProfileOverview.ProfileNavigationMenuComponents;
 using MarsAdvancedTaskPart1NUnitAutomation.ReportClass;
+using MarsAdvancedTaskPart1NUnitAutomation.Steps;
 using MarsAdvancedTaskPart1NUnitAutomation.Utilities;
 using NUnit.Framework;
 using System;
@@ -12,16 +12,16 @@ using System.Threading.Tasks;
 
 namespace MarsAdvancedTaskPart1NUnitAutomation.Test
 {
-   
+
     [TestFixture]
     public class ProfileAboutMeTest : CommonDriver
     {
 
-        AboutMeFeatures aboutMeFeaturesObj;
+        AboutMeSteps aboutMeStepsObj;
         GenerateReport? generateReport;
         public ProfileAboutMeTest()
         {
-            aboutMeFeaturesObj = new AboutMeFeatures();
+            aboutMeStepsObj = new AboutMeSteps();
         }
 
 
@@ -45,63 +45,63 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         public void TestSelectAvailabilityOption()
         {
 
-            aboutMeFeaturesObj.SelectAvailabilityOption("Part Time",0);
+            aboutMeStepsObj.SelectAvailabilityOption("Part Time", 0);
 
         }
         [Test, Order(2), Description("This test changes the availability option already selected")]
         public void TestChangeSelectedAvailabilityOption()
         {
 
-            aboutMeFeaturesObj.SelectAvailabilityOption("Full Time", 0);
+            aboutMeStepsObj.SelectAvailabilityOption("Full Time", 0);
 
         }
         [Test, Order(3), Description("This test cancels the availability selection")]
         public void TestCancelSelectedAvailabilityOption()
         {
 
-            aboutMeFeaturesObj.SelectAvailabilityOption("",1);
+            aboutMeStepsObj.SelectAvailabilityOption("", 1);
 
         }
         [Test, Order(4), Description("This test selects an hours option from the dropdown")]
         public void TestSelectHoursOption()
         {
 
-            aboutMeFeaturesObj.SelectHoursOption("Less than 30hours a week", 0);
+            aboutMeStepsObj.SelectHoursOption("Less than 30hours a week", 0);
 
         }
         [Test, Order(5), Description("This test changes the hours option already selected")]
         public void TestChangeSelectedHoursOption()
         {
 
-            aboutMeFeaturesObj.SelectHoursOption("As needed", 0);
+            aboutMeStepsObj.SelectHoursOption("As needed", 0);
 
         }
         [Test, Order(6), Description("This test cancels the hours selection")]
         public void TestCancelSelectedHoursOption()
         {
 
-            aboutMeFeaturesObj.SelectHoursOption("", 1);
+            aboutMeStepsObj.SelectHoursOption("", 1);
 
         }
         [Test, Order(7), Description("This test selects a target option from the dropdown")]
         public void TestSelectTargetOption()
         {
 
-            aboutMeFeaturesObj.SelectTargetOption("Between $500 and $1000 per month", 0);
+            aboutMeStepsObj.SelectTargetOption("Between $500 and $1000 per month", 0);
 
         }
         [Test, Order(8), Description("This test changes the target option already selected")]
         public void TestChangeTargetHoursOption()
         {
 
-            aboutMeFeaturesObj.SelectTargetOption("More than $1000 per month", 0);
+            aboutMeStepsObj.SelectTargetOption("More than $1000 per month", 0);
 
         }
         [Test, Order(9), Description("This test cancels the target selection")]
         public void TestCancelSelectedTargetOption()
         {
 
-            aboutMeFeaturesObj.SelectTargetOption("", 1);
+            aboutMeStepsObj.SelectTargetOption("", 1);
 
         }
 

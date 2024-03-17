@@ -2,6 +2,7 @@
 using MarsAdvancedTaskPart1NUnitAutomation.Pages.ProfileOverview.ProfileNavigationMenuComponents;
 using MarsAdvancedTaskPart1NUnitAutomation.ReportClass;
 using MarsAdvancedTaskPart1NUnitAutomation.Utilities;
+using MarsAdvancedTaskPart1NUnitAutomation.Steps;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -11,19 +12,19 @@ using System.Threading.Tasks;
 
 namespace MarsAdvancedTaskPart1NUnitAutomation.Test
 {
-    
+
     [TestFixture]
     public class LanguageTest : CommonDriver
     {
 
         List<LanguageDM> languageList;
-        LanguageFeatures languageFeaturesObj;
+        LanguageSteps languageStepsObj;
         ProfileNavigationTabs profileNavigationTabsObj;
         GenerateReport? generateReport;
         public LanguageTest()
         {
             languageList = new List<LanguageDM>();
-            languageFeaturesObj = new LanguageFeatures();
+            languageStepsObj = new LanguageSteps();
             profileNavigationTabsObj = new ProfileNavigationTabs();
         }
 
@@ -52,7 +53,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         public void TestDeleteAllLanguageRecords()
         {
 
-            languageFeaturesObj.DeleteAllLanguageRecords();
+            languageStepsObj.DeleteAllLanguageRecords();
 
         }
 
@@ -60,22 +61,22 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         public void TestCreateNewLanguageRecord()
         {
 
-            languageFeaturesObj.AddNewLanguage(languageList[0]);
-                        
+            languageStepsObj.AddNewLanguage(languageList[0]);
+
         }
 
         [Test, Order(3), Description("This test adds new Language Record with NULL data in both fields")]
         public void TestCreateNewLanguageRecordWithAllNullData()
         {
 
-            languageFeaturesObj.AddNewLanguageRecordWithInsufficientData(languageList[1]);
+            languageStepsObj.AddNewLanguageRecordWithInsufficientData(languageList[1]);
         }
 
         [Test, Order(4), Description("This test adds new Language Record without selecting any level and providing valid data in language text box")]
         public void TestCreateNewLanguageRecordWithLevelNotSelected()
         {
 
-            languageFeaturesObj.AddNewLanguageRecordWithInsufficientData(languageList[2]);
+            languageStepsObj.AddNewLanguageRecordWithInsufficientData(languageList[2]);
 
         }
 
@@ -84,84 +85,84 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         {
 
 
-            languageFeaturesObj.AddNewLanguageRecordWithInsufficientData(languageList[3]);
+            languageStepsObj.AddNewLanguageRecordWithInsufficientData(languageList[3]);
 
         }
         [Test, Order(6), Description("This test adds an already existing Language Record")]
         public void TestCreateAlreadyExistingLanguageRecord()
         {
 
-            languageFeaturesObj.AddAlreadyExistingLanguageRecord(languageList[0]);
+            languageStepsObj.AddAlreadyExistingLanguageRecord(languageList[0]);
 
         }
         [Test, Order(7), Description("This test adds a duplicate Language with different level")]
         public void TestCreateDuplicateLanguageWithDifferentLevel()
         {
 
-            languageFeaturesObj.AddDuplicateLanguageWithDifferentLevel(languageList[4]);
+            languageStepsObj.AddDuplicateLanguageWithDifferentLevel(languageList[4]);
 
         }
         [Test, Order(8), Description("This test adds a new Language with Special Characters and Numbers")]
         public void TestCreateLanguageRecordWithSpecialCharactersAndNumbers()
         {
 
-            languageFeaturesObj.AddNewLanguage(languageList[5]);
+            languageStepsObj.AddNewLanguage(languageList[5]);
 
         }
         [Test, Order(9), Description("This test adds a new Language with more than 500 characters")]
         public void TestCreateLanguageRecordWithlLongLanguageName()
         {
 
-            languageFeaturesObj.AddNewLanguage(languageList[6]);
+            languageStepsObj.AddNewLanguage(languageList[6]);
 
         }
         [Test, Order(10), Description("This test adds a new Language with Only Spaces")]
         public void TestCreateLanguageRecordWithOnlySpacesInLanguageTextBox()
         {
 
-            languageFeaturesObj.AddNewLanguage(languageList[7]);
+            languageStepsObj.AddNewLanguage(languageList[7]);
 
         }
         [Test, Order(11), Description("This test tries to add fifth language record")]
         public void TestCreateFifthLanguageRecord()
         {
 
-            languageFeaturesObj.AddFifthLanguage();
+            languageStepsObj.AddFifthLanguage();
 
         }
         [Test, Order(12), Description("This test Cancels a Language record before adding")]
         public void TestCancelAddLanguageRecord()
         {
 
-            languageFeaturesObj.CancelAddLanguageRecord(languageList[8]);
+            languageStepsObj.CancelAddLanguageRecord(languageList[8]);
 
         }
         [Test, Order(13), Description("This test updates an existing Language Record with all fields edited")]
         public void TestUpdateLanguageRecordWithBothFieldsEdited()
         {
 
-            languageFeaturesObj.UpdateExistingLanguageRecordWithFieldsEdited(languageList[9]);
+            languageStepsObj.UpdateExistingLanguageRecordWithFieldsEdited(languageList[9]);
 
         }
         [Test, Order(14), Description("This test updates an existing Language Record without editing any fields")]
         public void TestUpdateLanguageRecordWithNoFieldsEdited()
         {
 
-            languageFeaturesObj.UpdateExistingLanguageRecordWithNoFieldsEdited();
+            languageStepsObj.UpdateExistingLanguageRecordWithNoFieldsEdited();
 
         }
         [Test, Order(15), Description("This test updates existing Language Record with NULL data in both fields")]
         public void TestUpdateLanguageRecordWithAllNullData()
         {
 
-            languageFeaturesObj.UpdateLanguageRecordWithInsufficientData(languageList[1]);
+            languageStepsObj.UpdateLanguageRecordWithInsufficientData(languageList[1]);
         }
         [Test, Order(16), Description("This test updates existing Language Record by deleting the language in text box and not changing the level")]
         public void TestUpdateLanguageRecordWithValidLevelAndEmptyTextBox()
         {
 
 
-            languageFeaturesObj.UpdateLanguageRecordWithInsufficientData(languageList[3]);
+            languageStepsObj.UpdateLanguageRecordWithInsufficientData(languageList[3]);
 
         }
         [Test, Order(17), Description("This test updates existing Language Record without editing language in text box and not selecting any level")]
@@ -169,7 +170,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         {
 
 
-            languageFeaturesObj.UpdateLanguageRecordWithInsufficientData(languageList[10]);
+            languageStepsObj.UpdateLanguageRecordWithInsufficientData(languageList[10]);
 
         }
         [Test, Order(18), Description("This test updates existing Language Record by changing only the language")]
@@ -177,7 +178,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         {
 
 
-            languageFeaturesObj.UpdateExistingLanguageRecordWithFieldsEdited(languageList[11]);
+            languageStepsObj.UpdateExistingLanguageRecordWithFieldsEdited(languageList[11]);
 
         }
         [Test, Order(19), Description("This test updates existing Language Record by changing only level")]
@@ -185,7 +186,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         {
 
 
-            languageFeaturesObj.UpdateExistingLanguageRecordWithFieldsEdited(languageList[12]);
+            languageStepsObj.UpdateExistingLanguageRecordWithFieldsEdited(languageList[12]);
 
         }
         [Test, Order(20), Description("This test updates existing Language Record with an existing language name with different level")]
@@ -193,7 +194,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         {
 
 
-            languageFeaturesObj.UpdateExistingLanguageRecordWithExistingLanguageName(languageList[13], languageList[14]);
+            languageStepsObj.UpdateExistingLanguageRecordWithExistingLanguageName(languageList[13], languageList[14]);
 
         }
         [Test, Order(21), Description("This test updates existing Language Record with Special Characters and Numbers")]
@@ -201,7 +202,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         {
 
 
-            languageFeaturesObj.UpdateExistingLanguageRecordWithFieldsEdited(languageList[15]);
+            languageStepsObj.UpdateExistingLanguageRecordWithFieldsEdited(languageList[15]);
 
         }
         [Test, Order(22), Description("This test updates existing Language Record with more than 500 characters")]
@@ -209,7 +210,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         {
 
 
-            languageFeaturesObj.UpdateExistingLanguageRecordWithFieldsEdited(languageList[16]);
+            languageStepsObj.UpdateExistingLanguageRecordWithFieldsEdited(languageList[16]);
 
         }
         [Test, Order(23), Description("This test updates existing Language Record with Spaces Only")]
@@ -218,14 +219,14 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         {
 
 
-            languageFeaturesObj.UpdateExistingLanguageRecordWithFieldsEdited(languageList[17]);
+            languageStepsObj.UpdateExistingLanguageRecordWithFieldsEdited(languageList[17]);
 
         }
         [Test, Order(24), Description("This test Cancels a Language record before updating")]
         public void TestCancelUpdateLanguageRecord()
         {
 
-            languageFeaturesObj.CancelUpdateLanguageRecord(languageList[18]);
+            languageStepsObj.CancelUpdateLanguageRecord(languageList[18]);
 
         }
 

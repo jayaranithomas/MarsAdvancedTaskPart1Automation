@@ -78,6 +78,36 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.MarsSearchSkill_Component
                 Console.WriteLine(ex);
             }
         }
+        public IWebElement SearchSkillsIconLocator()
+        {
+
+            return searchSkillsIcon!;
+        }
+        public IWebElement SearchUserTBLocator()
+        {
+
+            return searchUserTB!;
+        }
+        public IWebElement SearchSkillsTBLocator()
+        {
+
+            return searchSkillsTB!;
+        }
+        public IWebElement CategoryLocator()
+        {
+
+            return category!;
+        }
+        public IWebElement SubCategoryLocator()
+        {
+
+            return subcategory!;
+        }
+        public IWebElement FilterLocator()
+        {
+
+            return filter!;
+        }
 
         public void GetSearchResult()
         {
@@ -85,47 +115,6 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.MarsSearchSkill_Component
             toSearchRecord = driver.FindElement(By.XPath("//p[@class='row-padded']"));
             toSearchRecord?.Click();
 
-        }
-        public void SearchSkills(SearchSkillsDM searchSkillsDM)
-        {
-            RenderSearchSkillComponents();
-            if (!string.IsNullOrEmpty(searchSkillsDM.category))
-            {
-                CategoryRenderingComponent(searchSkillsDM.category);
-                category?.Click();
-                if (!string.IsNullOrEmpty(searchSkillsDM.subcategory))
-                {
-                    SubcategoryRenderingComponent(searchSkillsDM.subcategory);
-                    subcategory?.Click();
-
-                }
-
-            }
-            if (!string.IsNullOrEmpty(searchSkillsDM.searchskills))
-            {
-                searchSkillsTB?.SendKeys(searchSkillsDM.searchskills);
-                searchSkillsIcon?.Click();
-            }
-            if (!string.IsNullOrEmpty(searchSkillsDM.searchuser))
-            {
-                searchUserTB?.Click();
-                IWebElement? userName = driver.FindElement(By.XPath("//input[@placeholder='Search user']"));
-                userName?.SendKeys(searchSkillsDM.searchuser);
-                userName?.SendKeys(Keys.Down);
-                Thread.Sleep(2000);
-                var actions = new OpenQA.Selenium.Interactions.Actions(driver);
-                actions.KeyDown(Keys.Enter).KeyUp(Keys.Enter);
-                actions.Perform();
-                IWebElement? filterText = driver.FindElement(By.XPath("//div[contains(text(),'Filter')]"));
-                filterText.Click();
-
-            }
-            if (!string.IsNullOrEmpty(searchSkillsDM.filter))
-            {
-                FilterRenderingComponent(searchSkillsDM.filter);
-                filter?.Click();
-            }
-            GetSearchResult();
         }
 
     }

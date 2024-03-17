@@ -1,6 +1,6 @@
-﻿using MarsAdvancedTaskPart1NUnitAutomation.Pages.MarsNotificationComponent;
-using MarsAdvancedTaskPart1NUnitAutomation.Pages.ProfileOverview.ProfileAboutMeComponent;
+﻿using MarsAdvancedTaskPart1NUnitAutomation.Pages.ProfileOverview.ProfileAboutMeComponent;
 using MarsAdvancedTaskPart1NUnitAutomation.ReportClass;
+using MarsAdvancedTaskPart1NUnitAutomation.Steps;
 using MarsAdvancedTaskPart1NUnitAutomation.Utilities;
 using NUnit.Framework;
 using System;
@@ -16,7 +16,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
     public class NotificationTest : CommonDriver
     {
 
-        NotificationFeatures? notificationFeaturesObj;
+        NotificationSteps? notificationStepsObj;
         GenerateReport? generateReport;
 
 
@@ -32,7 +32,7 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         public void SetUp()
         {
             generateReport?.CreateTest();
-            notificationFeaturesObj = new NotificationFeatures();
+            notificationStepsObj = new NotificationSteps();
 
         }
 
@@ -40,49 +40,49 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Test
         public void TestCheckNotificationVisibility()
         {
 
-            notificationFeaturesObj?.CheckNotificationsVisibility();
+            notificationStepsObj?.CheckNotificationsVisibility();
 
         }
         [Test, Order(2), Description("This test checks the Load More button functionality")]
         public void TestCheckLoadMoreButtonFunctionality()
         {
 
-            notificationFeaturesObj?.CheckLoadMoreButtonFunctionality();
+            notificationStepsObj?.CheckLoadMoreButtonFunctionality();
 
         }
         [Test, Order(3), Description("This test checks the Show Less button functionality")]
         public void TestCheckShowLessButtonFunctionality()
         {
 
-            notificationFeaturesObj?.CheckShowLessButtonFunctionality();
+            notificationStepsObj?.CheckShowLessButtonFunctionality();
 
         }
         [Test, Order(4), Description("This test checks the Select All functionality")]
         public void TestCheckSelectAllFunctionality()
         {
 
-            notificationFeaturesObj?.CheckSelectAllButtonFunctionality();
+            notificationStepsObj?.CheckSelectAllButtonFunctionality();
 
         }
         [Test, Order(5), Description("This test checks the UnSelect All functionality")]
         public void TestCheckUnSelectAllFunctionality()
         {
 
-            notificationFeaturesObj?.CheckUnSelectAllButtonFunctionality();
+            notificationStepsObj?.CheckUnSelectAllButtonFunctionality();
 
         }
         [Test, Order(6), Description("This test checks if the notifications can be marked as read")]
         public void TestCheckMarkAsReadFunctionality()
         {
 
-            notificationFeaturesObj?.CheckMarkAsReadFunctionality();
+            notificationStepsObj?.CheckMarkAsReadFunctionality();
 
         }
         [Test, Order(7), Description("This test checks if selected notifications can be deleted")]
         public void TestCheckSelectedDeleteFunctionality()
         {
 
-            notificationFeaturesObj?.CheckSelectedDeleteFunctionality();
+            notificationStepsObj?.CheckSelectedDeleteFunctionality();
 
         }
 

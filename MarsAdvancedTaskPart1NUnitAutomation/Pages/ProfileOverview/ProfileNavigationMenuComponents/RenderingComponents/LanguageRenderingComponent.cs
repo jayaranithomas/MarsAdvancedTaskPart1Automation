@@ -18,7 +18,6 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.ProfileOverview.ProfileNavi
         IWebElement? addButton;
         IWebElement? updateButton;
         IWebElement? cancelButton;
-        int cancelFlag = 0;
         public void RenderAddComponents()
         {
             try
@@ -34,6 +33,31 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.ProfileOverview.ProfileNavi
                 Console.WriteLine(ex);
             }
 
+        }
+        public IWebElement LanguageTBLocator()
+        {
+
+            return languageTextBox!;
+        }
+        public IWebElement LanguageLevelLocator()
+        {
+
+            return chooseLevelDD!;
+        }
+        public IWebElement AddButtonLocator()
+        {
+
+            return addButton!;
+        }
+        public IWebElement CancelButtonLocator()
+        {
+
+            return cancelButton!;
+        }
+        public IWebElement UpdateButtonLocator()
+        {
+
+            return updateButton!;
         }
 
         public void RenderUpdateComponents()
@@ -53,85 +77,5 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.ProfileOverview.ProfileNavi
 
         }
 
-        public void SetCancelFlag(int flag)
-        {
-            cancelFlag = flag;
-        }
-
-
-        public void AddLanguage(LanguageDM languageDM)
-        {
-            IWebElement addNewButton = driver.FindElement(By.XPath("//div[@data-tab='first']//div[contains(text(),'Add New')]"));
-            addNewButton.Click();
-
-            RenderAddComponents();
-
-            if (!string.IsNullOrEmpty(languageDM.language))
-            {
-                languageTextBox?.Click();
-                languageTextBox?.SendKeys(languageDM.language);
-            }
-            if (!string.IsNullOrEmpty(languageDM.level))
-            {
-                chooseLevelDD?.Click();
-                chooseLevelDD?.SendKeys(languageDM.level);
-            }
-
-            Thread.Sleep(2000);
-
-            if (cancelFlag != 1)
-            {
-                addButton?.Click();
-            }
-            else
-            { cancelFlag = 0; cancelButton?.Click(); }
-        }
-
-        public void EditLanguageRecord(LanguageDM languageDM)
-        {
-            Wait.WaitToBeClickable("XPath", "//div[@data-tab='first']//tbody[1]//i[@class='outline write icon']", 3);
-
-            IWebElement editButton = driver.FindElement(By.XPath("//div[@data-tab='first']//tbody[1]//i[@class='outline write icon']"));
-            editButton.Click();
-
-            RenderUpdateComponents();
-            if (!languageDM.language.Equals("No Change"))
-            {
-                if (string.IsNullOrEmpty(languageDM.language))
-                {
-                    var actions = new OpenQA.Selenium.Interactions.Actions(driver);
-                    actions.Click(languageTextBox);
-                    actions.KeyDown(Keys.Control).SendKeys("a").KeyUp(Keys.Control).SendKeys(Keys.Delete);
-                    actions.Perform();
-                }
-                else
-                {
-                    languageTextBox?.Clear();
-                    languageTextBox?.SendKeys(languageDM.language);
-                }
-            }
-            if (!languageDM.level.Equals("No Change"))
-            {
-                chooseLevelDD?.Click();
-                if (!string.IsNullOrEmpty(languageDM.level))
-                    chooseLevelDD?.SendKeys(languageDM.level);
-
-                else
-                    chooseLevelDD?.SendKeys("Language Level");
-                chooseLevelDD?.Click();
-            }
-
-
-            Thread.Sleep(2000);
-
-            if (cancelFlag != 1)
-            {
-
-                updateButton?.Click();
-            }
-            else
-            { cancelFlag = 0; cancelButton?.Click(); }
-
-        }
     }
 }

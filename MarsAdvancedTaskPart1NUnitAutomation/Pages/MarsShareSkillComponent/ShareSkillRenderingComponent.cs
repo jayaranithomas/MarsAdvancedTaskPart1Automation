@@ -34,10 +34,6 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.MarsShareSkillComponent
         IWebElement? saveButton;
         IWebElement? cancelButton;
 
-        string titleText = string.Empty;
-        string descriptionText = string.Empty;
-        int cancelFlag = 0;
-
         public void RenderShareSkillComponents()
         {
             try
@@ -116,110 +112,91 @@ namespace MarsAdvancedTaskPart1NUnitAutomation.Pages.MarsShareSkillComponent
             }
             return tagRemoveList![index];
         }
-
-        public string GetTitle()
+        public IWebElement CreditLocator()
         {
-            return titleText;
+
+            return credit!;
         }
-        public string GetDescription()
+        public IWebElement DescriptionLocator()
         {
-            return descriptionText;
+
+            return description!;
         }
-        public void SetCancelFlag(int flag)
+        public IWebElement TitleLocator()
         {
-            this.cancelFlag = flag;
+
+            return title!;
         }
-
-
-        public void AddShareSkills(ShareSkillsDM shareSkillsDM)
+        public IWebElement CategoryLocator()
         {
-            RenderShareSkillComponents();
 
-            if (!string.IsNullOrEmpty(shareSkillsDM.title))
-                title?.SendKeys(shareSkillsDM.title);
-
-            if (!string.IsNullOrEmpty(shareSkillsDM.description))
-                description?.SendKeys(shareSkillsDM.description);
-
-            if (!string.IsNullOrEmpty(shareSkillsDM.category))
-            {
-                category?.SendKeys(shareSkillsDM.category);
-                RenderSubcategoryComponent();
-                if (!string.IsNullOrEmpty(shareSkillsDM.subcategory))
-                    subcategory?.SendKeys(shareSkillsDM.subcategory);
-            }
-
-            if (!string.IsNullOrEmpty(shareSkillsDM.tag))
-            {
-                tagList?[0].SendKeys(shareSkillsDM.tag);
-                tagList?[0].SendKeys(Keys.Enter);
-            }
-
-            if (shareSkillsDM.servicetype.Equals("1"))
-            {
-                servicetype1?.Click();
-            }
-            else if (shareSkillsDM.servicetype.Equals("0"))
-            {
-                servicetype0?.Click();
-            }
-
-            if (!string.IsNullOrEmpty(shareSkillsDM.locationtype))
-            {
-                locationtype?.SendKeys(shareSkillsDM.locationtype);
-                locationtype?.Click();
-            }
-
-            if (!string.IsNullOrEmpty(shareSkillsDM.startdate))
-            {
-                startdate?.SendKeys(shareSkillsDM.startdate);
-            }
-
-            if (!string.IsNullOrEmpty(shareSkillsDM.enddate))
-                enddate?.SendKeys(shareSkillsDM.enddate);
-
-            if (shareSkillsDM.skilltrade.Equals("true"))
-            {
-                skilltradeT?.Click();
-                tagList?[1].SendKeys(shareSkillsDM.skillexchange);
-                tagList?[1].SendKeys(Keys.Enter);
-            }
-            else
-            {
-                skilltradeF?.Click();
-                RenderCreditComponent();
-                credit?.SendKeys(shareSkillsDM.credit);
-            }
-
-            if (!string.IsNullOrEmpty(shareSkillsDM.worksamples))
-            {
-                string filePath = @"F:\sample1.txt";
-                worksamples?.Click();
-                worksamples?.SendKeys(filePath);
-            }
-
-            if (shareSkillsDM.active.Equals("true"))
-            {
-                activeT?.Click();
-            }
-            else if (shareSkillsDM.active.Equals("false"))
-            {
-                activeF?.Click();
-            }
-
-            if (!string.IsNullOrEmpty(title?.GetAttribute("value")))
-                titleText = title.GetAttribute("value");
-
-            if (!string.IsNullOrEmpty(description?.Text))
-                descriptionText = description.Text;
-
-            if (cancelFlag == 0)
-                saveButton?.Click();
-            else
-            {
-                cancelFlag = 0;
-                cancelButton?.Click();
-            }
+            return category!;
         }
+        public IWebElement SubCategoryLocator()
+        {
+
+            return subcategory!;
+        }
+        public IWebElement ServiceType0Locator()
+        {
+
+            return servicetype0!;
+        }
+        public IWebElement ServiceType1Locator()
+        {
+
+            return servicetype1!;
+        }
+        public IWebElement LocationTypeLocator()
+        {
+
+            return locationtype!;
+        }
+        public IWebElement StartDateLocator()
+        {
+
+            return startdate!;
+        }
+        public IWebElement EndDateLocator()
+        {
+
+            return enddate!;
+        }
+        public IWebElement SkillTradeTLocator()
+        {
+
+            return skilltradeT!;
+        }
+        public IWebElement SkillTradeFLocator()
+        {
+
+            return skilltradeF!;
+        }
+        public IWebElement WorkSamplesLocator()
+        {
+
+            return worksamples!;
+        }
+        public IWebElement ActiveTLocator()
+        {
+
+            return activeT!;
+        }
+        public IWebElement ActiveFLocator()
+        {
+
+            return activeF!;
+        }
+        public IWebElement SaveButtonLocator()
+        {
+
+            return saveButton!;
+        }
+        public IWebElement CancelButtonLocator()
+        {
+
+            return cancelButton!;
+        }
+
     }
 }
